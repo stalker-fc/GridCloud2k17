@@ -1,15 +1,27 @@
-import json
-from flask import Flask
+"""
+Routes and views for the flask application.
+"""
+
+from datetime import datetime
 from flask import render_template, request
-from random_string import getNewPassword
-
-app = Flask(__name__)
-
+from FlaskWebProject import app
+from FlaskWebProject.random_string import getNewPassword
 
 @app.route('/')
-def index():
-    print(app.background_color)
-    return render_template('index.html', background_color=app.background_color)
+@app.route('/home')
+def home():
+    """Renders the home page."""
+    if not hasattr(app, 'background_color'):
+        app.background_color = '#FF0000'
+
+    return render_template(
+        'index.html',
+        background_color=app.background_color,
+    )
+
+@app.route('/password/<length>')
+def getPassword(length=None):
+    return getNewPassword(int(length))
 
 @app.route('/color', methods=['POST'])
 def changeColor():
@@ -20,13 +32,5 @@ def changeColor():
         app.background_color = '#FAEBD7'
     else:
         app.background_color = content['color']
-
+    print(app.background_color)
     return 'SUCCESS'
-
-@app.route('/password/<length>')
-def getPassword(length=None):
-    return getNewPassword(int(length))
-
-if __name__ == '__main__':
-    app.background_color = "#FAEBD8"
-    app.run()
