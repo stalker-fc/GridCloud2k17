@@ -5,7 +5,7 @@ import random
 def getNewPassword(length):
     if type(length) is not int:
         return ''
-    if length < 0:
+    if length < 0 or length > 256:
         return ''
 
     res = []
