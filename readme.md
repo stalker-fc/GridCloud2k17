@@ -1,3 +1,7 @@
-This is miminum code required for an Azure Flask project deployment. 
+Задание по курсу Grid&Cloud
 
-Check out my [blog post](http://timmyreilly.azurewebsites.net/starter-site-for-flask-on-azure-web-apps/) if you have any other questions. 
+Ссылка на [ azure ](http://grid-cloud-flask.azurewebsites.net)
+
+Вся работа сделана по [ этому туториалу ](http://timmyreilly.azurewebsites.net/starter-site-for-flask-on-azure-web-apps/)
+
+Тесты сделаны через Travis CI.
